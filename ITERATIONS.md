@@ -45,6 +45,8 @@
     - `api/Dockerfile`, `frontend/Dockerfile` (modifiés) — images de base qualifiées `docker.io/library/...`.
     - `frontend/nginx.conf` (modifié) — en-têtes de sécurité + CSP same-origin (`connect-src 'self'`), routage statique conservé.
 
+**⚠️ Temps restant annoncé après l'itération 1 : moins de 15 minutes** (demandé le 2026-11-18 vers 17:35). Ce n'est plus assez pour coder + publier + faire tester l'itération 2 (budget mini ~15-25 min). Décision : ne pas coder l'itération 2 maintenant, garder l'itération 1 publiée comme état de pitch stable. À valider par les cadreurs si le temps restant est réévalué à la hausse.
+
 ## Itération 2 : La coordinatrice ouvre la fiche d'un commerce depuis la liste
 
 - **Dans le périmètre** : au clic sur une ligne de la liste, affichage d'un panneau détail (raison du besoin, depuis quand, commentaire du formulaire), comme sur le croquis. Un commerce est sélectionné par défaut au chargement. Toujours des données en dur.
