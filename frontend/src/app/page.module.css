@@ -68,6 +68,36 @@
   align-items: start;
 }
 
+.listeEntete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filtre {
+  display: flex;
+  gap: 8px;
+}
+
+.filtre button {
+  border: 1px solid var(--gris-clair);
+  background: #ffffff;
+  color: var(--foreground);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.filtreActif {
+  background: var(--primaire) !important;
+  color: #ffffff !important;
+  border-color: var(--primaire) !important;
+}
+
 .liste table {
   width: 100%;
   border-collapse: collapse;

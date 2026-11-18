@@ -1,14 +1,14 @@
 import styles from "./page.module.css";
 import {
-  commercesAFormer,
+  commerces,
   compterCommercesAFormer,
   compterDemandesRecentes,
 } from "./commerces-data";
 import ListeEtDetailCommerces from "./commerce-detail";
 
 export default function TableauDeBord() {
-  const aFormer = compterCommercesAFormer(commercesAFormer);
-  const demandesRecentes = compterDemandesRecentes(commercesAFormer);
+  const aFormer = compterCommercesAFormer(commerces);
+  const demandesRecentes = compterDemandesRecentes(commerces);
 
   return (
     <div className={styles.page}>

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  commercesAFormer,
+  commerces,
   compterCommercesAFormer,
   compterDemandesRecentes,
   trouverCommerceParId,
@@ -8,10 +8,9 @@ import {
 } from "./commerces-data";
 
 describe("compterCommercesAFormer", () => {
-  it("compte tous les commerces de la liste", () => {
-    expect(compterCommercesAFormer(commercesAFormer)).toBe(
-      commercesAFormer.length,
-    );
+  it("ne compte que les commerces ayant besoin de formation", () => {
+    const attendu = commerces.filter((commerce) => commerce.besoinFormation).length;
+    expect(compterCommercesAFormer(commerces)).toBe(attendu);
   });
 
   it("renvoie 0 pour une liste vide", () => {
@@ -21,22 +20,22 @@ describe("compterCommercesAFormer", () => {
 
 describe("compterDemandesRecentes", () => {
   it("ne compte que les commerces marqués comme récents", () => {
-    const commerces: Commerce[] = [
-      { ...commercesAFormer[0], recent: true },
-      { ...commercesAFormer[0], recent: false },
-      { ...commercesAFormer[0], recent: true },
+    const liste: Commerce[] = [
+      { ...commerces[0], recent: true },
+      { ...commerces[0], recent: false },
+      { ...commerces[0], recent: true },
     ];
-    expect(compterDemandesRecentes(commerces)).toBe(2);
+    expect(compterDemandesRecentes(liste)).toBe(2);
   });
 });
 
 describe("trouverCommerceParId", () => {
   it("retrouve le commerce correspondant à l'identifiant", () => {
-    const cible = commercesAFormer[1];
-    expect(trouverCommerceParId(commercesAFormer, cible.id)).toEqual(cible);
+    const cible = commerces[1];
+    expect(trouverCommerceParId(commerces, cible.id)).toEqual(cible);
   });
 
   it("renvoie undefined si l'identifiant n'existe pas", () => {
-    expect(trouverCommerceParId(commercesAFormer, "inconnu")).toBeUndefined();
+    expect(trouverCommerceParId(commerces, "inconnu")).toBeUndefined();
   });
 });

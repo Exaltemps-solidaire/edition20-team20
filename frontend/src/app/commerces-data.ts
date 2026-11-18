@@ -13,18 +13,20 @@ export type Commerce = {
   id: string;
   nom: string;
   quartier: string;
-  raison: RaisonBesoin;
-  depuis: string;
-  recent: boolean;
-  statut: StatutCommerce;
-  commentaire: string;
+  besoinFormation: boolean;
+  raison?: RaisonBesoin;
+  depuis?: string;
+  recent?: boolean;
+  statut?: StatutCommerce;
+  commentaire?: string;
 };
 
-export const commercesAFormer: Commerce[] = [
+export const commerces: Commerce[] = [
   {
     id: "cafe-des-arts",
     nom: "Café des Arts",
     quartier: "Paris 11e",
+    besoinFormation: true,
     raison: "Changement d'équipe",
     depuis: "il y a 2 semaines",
     recent: true,
@@ -35,6 +37,7 @@ export const commercesAFormer: Commerce[] = [
     id: "librairie-du-canal",
     nom: "Librairie du Canal",
     quartier: "Paris 19e",
+    besoinFormation: true,
     raison: "Demande du commerce",
     depuis: "il y a 3 semaines",
     recent: true,
@@ -45,6 +48,7 @@ export const commercesAFormer: Commerce[] = [
     id: "le-comptoir-bio",
     nom: "Le Comptoir Bio",
     quartier: "Paris 20e",
+    besoinFormation: true,
     raison: "Formulaire de suivi",
     depuis: "il y a 1 mois",
     recent: false,
@@ -55,16 +59,35 @@ export const commercesAFormer: Commerce[] = [
     id: "bistrot-central",
     nom: "Bistrot Central",
     quartier: "Paris 10e",
+    besoinFormation: true,
     raison: "Nouveau commerce",
     depuis: "il y a 1 mois",
     recent: false,
     statut: "À planifier",
     commentaire: "Intégration récente au réseau Carillon, formation initiale à prévoir.",
   },
+  {
+    id: "pharmacie-du-parc",
+    nom: "Pharmacie du Parc",
+    quartier: "Paris 11e",
+    besoinFormation: false,
+  },
+  {
+    id: "boulangerie-saint-martin",
+    nom: "Boulangerie Saint-Martin",
+    quartier: "Paris 10e",
+    besoinFormation: false,
+  },
+  {
+    id: "epicerie-de-la-gare",
+    nom: "Épicerie de la Gare",
+    quartier: "Paris 19e",
+    besoinFormation: false,
+  },
 ];
 
 export function compterCommercesAFormer(commerces: Commerce[]): number {
-  return commerces.length;
+  return commerces.filter((commerce) => commerce.besoinFormation).length;
 }
 
 export function compterDemandesRecentes(commerces: Commerce[]): number {
