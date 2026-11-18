@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
-import { Commerce, commerces, trouverCommerceParId } from "./commerces-data";
+import {
+  Commerce,
+  commerces,
+  estDemandeAncienne,
+  trouverCommerceParId,
+} from "./commerces-data";
 
 type Filtre = "tous" | "oui" | "non";
 
@@ -57,24 +62,37 @@ export default function ListeEtDetailCommerces() {
             </tr>
           </thead>
           <tbody>
-            {commercesAffiches.map((commerce: Commerce) => (
-              <tr
-                key={commerce.id}
-                onClick={() => setSelectionId(commerce.id)}
-                className={
-                  commerce.id === selectionId ? styles.ligneSelectionnee : undefined
-                }
-              >
-                <td>
-                  <p className={styles.commerceNom}>{commerce.nom}</p>
-                  <p className={styles.commerceQuartier}>{commerce.quartier}</p>
-                </td>
-                <td>{commerce.besoinFormation ? "Oui" : "Non"}</td>
-                <td>{commerce.raison ?? "—"}</td>
-                <td>{commerce.depuis ?? "—"}</td>
-                <td>{commerce.statut ?? "—"}</td>
-              </tr>
-            ))}
+            {commercesAffiches.map((commerce: Commerce) => {
+              const ancienne = estDemandeAncienne(commerce);
+              return (
+                <tr
+                  key={commerce.id}
+                  onClick={() => setSelectionId(commerce.id)}
+                  className={[
+                    commerce.id === selectionId ? styles.ligneSelectionnee : "",
+                    ancienne ? styles.ligneAncienne : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <td>
+                    <p className={styles.commerceNom}>
+                      {ancienne && (
+                        <span aria-label="Demande ancienne" title="Demande de plus de 3 semaines">
+                          ⚠️{" "}
+                        </span>
+                      )}
+                      {commerce.nom}
+                    </p>
+                    <p className={styles.commerceQuartier}>{commerce.quartier}</p>
+                  </td>
+                  <td>{commerce.besoinFormation ? "Oui" : "Non"}</td>
+                  <td>{commerce.raison ?? "—"}</td>
+                  <td>{commerce.depuis ?? "—"}</td>
+                  <td>{commerce.statut ?? "—"}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -82,6 +100,12 @@ export default function ListeEtDetailCommerces() {
       <aside className={styles.detail}>
         <p className={styles.surtitre}>{selection.quartier}</p>
         <h2>{selection.nom}</h2>
+        <p className={styles.detailLigne}>
+          <strong>Adresse :</strong> {selection.adresse}
+        </p>
+        <p className={styles.detailLigne}>
+          <strong>Contact :</strong> {selection.contact}
+        </p>
         {selection.besoinFormation ? (
           <>
             <p className={styles.detailLigne}>
@@ -92,6 +116,16 @@ export default function ListeEtDetailCommerces() {
             </p>
             <p className={styles.detailLigne}>
               <strong>Statut :</strong> {selection.statut}
+            </p>
+            <p className={styles.detailLigne}>
+              <strong>Personnes à former :</strong> {selection.personnesAFormer}
+            </p>
+            <p className={styles.detailLigne}>
+              <strong>Formations demandées :</strong>{" "}
+              {selection.formationsDemandees?.join(", ")}
+            </p>
+            <p className={styles.detailLigne}>
+              <strong>Assignée à :</strong> {selection.personneAssignee}
             </p>
             <p className={styles.detailCommentaire}>{selection.commentaire}</p>
           </>

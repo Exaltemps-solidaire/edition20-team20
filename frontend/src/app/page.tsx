@@ -23,6 +23,7 @@ export default function TableauDeBord() {
 
       <section className={styles.tuiles} aria-label="Indicateurs clés">
         <article className={styles.tuile}>
+          <p className={styles.tuileIcone} aria-hidden="true">📋</p>
           <p className={styles.tuileValeur}>{aFormer}</p>
           <p className={styles.tuileLibelle}>Commerces à former</p>
           <p className={styles.tuileDetail}>
@@ -30,14 +31,17 @@ export default function TableauDeBord() {
           </p>
         </article>
         <article className={styles.tuile}>
+          <p className={styles.tuileIcone} aria-hidden="true">📅</p>
           <p className={styles.tuileValeur}>4</p>
           <p className={styles.tuileLibelle}>Formations prévues d&apos;ici fin 2026</p>
         </article>
         <article className={styles.tuile}>
+          <p className={styles.tuileIcone} aria-hidden="true">✅</p>
           <p className={styles.tuileValeur}>24</p>
           <p className={styles.tuileLibelle}>Formations réalisées en 2025</p>
         </article>
         <article className={styles.tuile}>
+          <p className={styles.tuileIcone} aria-hidden="true">🎓</p>
           <p className={styles.tuileValeur}>60</p>
           <p className={styles.tuileLibelle}>Commerces formés en 2025</p>
         </article>

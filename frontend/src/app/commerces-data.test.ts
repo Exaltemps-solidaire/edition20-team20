@@ -3,6 +3,7 @@ import {
   commerces,
   compterCommercesAFormer,
   compterDemandesRecentes,
+  estDemandeAncienne,
   trouverCommerceParId,
   type Commerce,
 } from "./commerces-data";
@@ -37,5 +38,22 @@ describe("trouverCommerceParId", () => {
 
   it("renvoie undefined si l'identifiant n'existe pas", () => {
     expect(trouverCommerceParId(commerces, "inconnu")).toBeUndefined();
+  });
+});
+
+describe("estDemandeAncienne", () => {
+  it("est vraie pour une demande de plus de 3 semaines", () => {
+    const commerce: Commerce = { ...commerces[0], besoinFormation: true, depuisJours: 30 };
+    expect(estDemandeAncienne(commerce)).toBe(true);
+  });
+
+  it("est fausse pour une demande de 3 semaines ou moins", () => {
+    const commerce: Commerce = { ...commerces[0], besoinFormation: true, depuisJours: 21 };
+    expect(estDemandeAncienne(commerce)).toBe(false);
+  });
+
+  it("est fausse pour un commerce qui n'a pas besoin de formation", () => {
+    const commerce: Commerce = { ...commerces[4], besoinFormation: false, depuisJours: 60 };
+    expect(estDemandeAncienne(commerce)).toBe(false);
   });
 });
