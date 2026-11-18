@@ -1,13 +1,11 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fef6ed;
+  --foreground: #2b5672;
+  --primaire: #004c9a;
+  --accent: #cf4b31;
+  --accent-clair: #f7a258;
+  --gris: #8f8f8f;
+  --gris-clair: #e2e2e2;
 }
 
 html {
