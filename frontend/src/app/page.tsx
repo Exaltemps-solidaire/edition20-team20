@@ -4,6 +4,7 @@ import {
   compterCommercesAFormer,
   compterDemandesRecentes,
 } from "./commerces-data";
+import ListeEtDetailCommerces from "./commerce-detail";
 
 export default function TableauDeBord() {
   const aFormer = compterCommercesAFormer(commercesAFormer);
@@ -42,32 +43,7 @@ export default function TableauDeBord() {
         </article>
       </section>
 
-      <section className={styles.liste}>
-        <h2>Commerces ayant un besoin de formation</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Commerce</th>
-              <th>Raison du besoin</th>
-              <th>Depuis</th>
-              <th>Statut</th>
-            </tr>
-          </thead>
-          <tbody>
-            {commercesAFormer.map((commerce) => (
-              <tr key={commerce.id}>
-                <td>
-                  <p className={styles.commerceNom}>{commerce.nom}</p>
-                  <p className={styles.commerceQuartier}>{commerce.quartier}</p>
-                </td>
-                <td>{commerce.raison}</td>
-                <td>{commerce.depuis}</td>
-                <td>{commerce.statut}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+      <ListeEtDetailCommerces />
     </div>
   );
 }

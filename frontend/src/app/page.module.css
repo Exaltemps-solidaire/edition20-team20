@@ -61,9 +61,50 @@
   color: var(--accent);
 }
 
+.listeEtDetail {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
 .liste table {
   width: 100%;
   border-collapse: collapse;
+}
+
+.liste tbody tr {
+  cursor: pointer;
+}
+
+.ligneSelectionnee {
+  background: var(--gris-clair);
+}
+
+.detail {
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid var(--gris-clair);
+  border-top: 3px solid var(--accent);
+}
+
+.detail h2 {
+  margin: 4px 0 12px;
+  color: var(--primaire);
+  font-size: 20px;
+}
+
+.detailLigne {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.detailCommentaire {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--gris);
+  font-style: italic;
 }
 
 .liste th {

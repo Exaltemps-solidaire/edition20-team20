@@ -70,3 +70,10 @@ export function compterCommercesAFormer(commerces: Commerce[]): number {
 export function compterDemandesRecentes(commerces: Commerce[]): number {
   return commerces.filter((commerce) => commerce.recent).length;
 }
+
+export function trouverCommerceParId(
+  commerces: Commerce[],
+  id: string,
+): Commerce | undefined {
+  return commerces.find((commerce) => commerce.id === id);
+}
