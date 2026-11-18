@@ -47,6 +47,8 @@
 
 **⚠️ Temps restant annoncé après l'itération 1 : moins de 15 minutes** (demandé le 2026-11-18 vers 17:35). Ce n'est plus assez pour coder + publier + faire tester l'itération 2 (budget mini ~15-25 min). Décision : ne pas coder l'itération 2 maintenant, garder l'itération 1 publiée comme état de pitch stable. À valider par les cadreurs si le temps restant est réévalué à la hausse.
 
+**✂️ Confirmé au moment de lancer `/iteration 2` : moins de 10 minutes restantes** (demandé le 2026-11-18 vers 17:40). Toujours pas assez pour une itération complète. Décision maintenue : l'itération 2 (fiche commerce au clic) **n'est pas codée** dans ce build. Le temps restant est consacré à vérifier que l'itération 1 tient pour le pitch (déploiement déjà en ligne, `/health` et `/sante` déjà vérifiés sur 8080/8081 localement). Reste au développeur de confirmer `$URL_PUBLIQUE/health` et `/sante` dans son navigateur.
+
 ## Itération 2 : La coordinatrice ouvre la fiche d'un commerce depuis la liste
 
 - **Dans le périmètre** : au clic sur une ligne de la liste, affichage d'un panneau détail (raison du besoin, depuis quand, commentaire du formulaire), comme sur le croquis. Un commerce est sélectionné par défaut au chargement. Toujours des données en dur.
